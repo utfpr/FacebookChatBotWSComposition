@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<axis2 xmlns="http://www.netbeans.org/ns/axis2/1">
+    <libraries>
+        <library-ref name="botschema.jar"/>
+        <library-ref name="xbean.jar"/>
+        <library-ref name="joda-time-2.2.jar"/>
+        <library-ref name="trugger-2.8.jar"/>
+        <library-ref name="BaseDados.jar"/>
+        <library-ref name="hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
+        <library-ref name="hibernate3.jar"/>
+        <library-ref name="antlr-2.7.6.jar"/>
+        <library-ref name="commons-collections-3.1.jar"/>
+        <library-ref name="dom4j-1.6.1.jar"/>
+        <library-ref name="javassist-3.9.0.GA.jar"/>
+        <library-ref name="jta-1.1.jar"/>
+        <library-ref name="slf4j-api-1.5.8.jar"/>
+        <library-ref name="asm-attrs.jar"/>
+        <library-ref name="asm.jar"/>
+        <library-ref name="brazilutils-1.9.jar"/>
+        <library-ref name="c3p0-0.9.1.jar"/>
+        <library-ref name="cglib-2.1.3.jar"/>
+        <library-ref name="commons-collections-2.1.1.jar"/>
+        <library-ref name="ehcache-1.2.3.jar"/>
+        <library-ref name="ejb3-persistence.jar"/>
+        <library-ref name="hibernate-annotations.jar"/>
+        <library-ref name="hibernate-commons-annotations.jar"/>
+        <library-ref name="hibernate-entitymanager.jar"/>
+        <library-ref name="hibernate-tools.jar"/>
+        <library-ref name="javassist.jar"/>
+        <library-ref name="jdbc2_0-stdext.jar"/>
+        <library-ref name="jta.jar"/>
+        <library-ref name="mysql-connector-java-5.1.18-bin.jar"/>
+        <library-ref name="org-apache-commons-logging.jar"/>
+        <library-ref name="salas.jar"/>
+        <library-ref name="xstream-1.4.2.jar"/>
+        <library-ref name="axis-ant.jar"/>
+        <library-ref name="axis-jaxrpc-1.2-beta-3.jar"/>
+        <library-ref name="axis.jar"/>
+        <library-ref name="log4j-1.2.8.jar"/>
+        <library-ref name="neodatis-odb-2.2.beta1.252.jar"/>
+    </libraries>
+    <service name="WebServiceDadosUsuarios">
+        <service-class>br.edu.utfpr.cm.tsi.tcc.marcelo.WebService</service-class>
+    </service>
+</axis2>

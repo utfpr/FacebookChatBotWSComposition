@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="timetable" type="timetableType"/>
+  <xs:complexType name="periodType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+        <xs:attribute type="xs:string" name="short" use="optional"/>
+        <xs:attribute type="xs:byte" name="period" use="optional"/>
+        <xs:attribute type="xs:string" name="starttime" use="optional"/>
+        <xs:attribute type="xs:string" name="endtime" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="periodsType">
+    <xs:sequence>
+      <xs:element type="periodType" name="period" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="options"/>
+    <xs:attribute type="xs:string" name="columns"/>
+  </xs:complexType>
+  <xs:complexType name="daysdefType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id" use="optional"/>
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+        <xs:attribute type="xs:string" name="short" use="optional"/>
+        <xs:attribute type="xs:string" name="days" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="daysdefsType">
+    <xs:sequence>
+      <xs:element type="daysdefType" name="daysdef" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="options"/>
+    <xs:attribute type="xs:string" name="columns"/>
+  </xs:complexType>
+  <xs:complexType name="weeksdefType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id"/>
+        <xs:attribute type="xs:string" name="name"/>
+        <xs:attribute type="xs:string" name="short"/>
+        <xs:attribute type="xs:byte" name="weeks"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="weeksdefsType">
+    <xs:sequence>
+      <xs:element type="weeksdefType" name="weeksdef"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="options"/>
+    <xs:attribute type="xs:string" name="columns"/>
+  </xs:complexType>
+  <xs:complexType name="termsdefType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id"/>
+        <xs:attribute type="xs:string" name="name"/>
+        <xs:attribute type="xs:string" name="short"/>
+        <xs:attribute type="xs:byte" name="terms"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="termsdefsType">
+    <xs:sequence>
+      <xs:element type="termsdefType" name="termsdef"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="options"/>
+    <xs:attribute type="xs:string" name="columns"/>
+  </xs:complexType>
+  <xs:complexType name="subjectType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id" use="optional"/>
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+        <xs:attribute type="xs:string" name="short" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="subjectsType">
+    <xs:sequence>
+      <xs:element type="subjectType" name="subject" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="options"/>
+    <xs:attribute type="xs:string" name="columns"/>
+  </xs:complexType>
+  <xs:complexType name="teacherType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id" use="optional"/>
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+        <xs:attribute type="xs:string" name="short" use="optional"/>
+        <xs:attribute type="xs:string" name="gender" use="optional"/>
+        <xs:attribute type="xs:string" name="color" use="optional"/>
+        <xs:attribute type="xs:string" name="email" use="optional"/>
+        <xs:attribute type="xs:string" name="mobile" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="teachersType">
+    <xs:sequence>
+      <xs:element type="teacherType" name="teacher" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="options"/>
+    <xs:attribute type="xs:string" name="columns"/>
+  </xs:complexType>
+  <xs:complexType name="classroomType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id" use="optional"/>
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+        <xs:attribute type="xs:string" name="short" use="optional"/>
+        <xs:attribute type="xs:string" name="capacity" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="classroomsType">
+    <xs:sequence>
+      <xs:element type="classroomType" name="classroom" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="options"/>
+    <xs:attribute type="xs:string" name="columns"/>
+  </xs:complexType>
+  <xs:complexType name="gradeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+        <xs:attribute type="xs:string" name="short" use="optional"/>
+        <xs:attribute type="xs:byte" name="grade" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="gradesType">
+    <xs:sequence>
+      <xs:element type="gradeType" name="grade" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="options"/>
+    <xs:attribute type="xs:string" name="columns"/>
+  </xs:complexType>
+  <xs:complexType name="classType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id" use="optional"/>
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+        <xs:attribute type="xs:string" name="short" use="optional"/>
+        <xs:attribute type="xs:string" name="teacherid" use="optional"/>
+        <xs:attribute type="xs:string" name="classroomids" use="optional"/>
+        <xs:attribute type="xs:string" name="grade" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="classesType">
+    <xs:sequence>
+      <xs:element type="classType" name="class" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="options"/>
+    <xs:attribute type="xs:string" name="columns"/>
+  </xs:complexType>
+  <xs:complexType name="groupType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id" use="optional"/>
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+        <xs:attribute type="xs:string" name="classid" use="optional"/>
+        <xs:attribute type="xs:string" name="studentids" use="optional"/>
+        <xs:attribute type="xs:byte" name="entireclass" use="optional"/>
+        <xs:attribute type="xs:byte" name="divisiontag" use="optional"/>
+        <xs:attribute type="xs:string" name="studentcount" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="groupsType">
+    <xs:sequence>
+      <xs:element type="groupType" name="group" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="options"/>
+    <xs:attribute type="xs:string" name="columns"/>
+  </xs:complexType>
+  <xs:complexType name="studentsType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="options"/>
+        <xs:attribute type="xs:string" name="columns"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="studentsubjectsType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="options"/>
+        <xs:attribute type="xs:string" name="columns"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="lessonType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id" use="optional"/>
+        <xs:attribute type="xs:string" name="classids" use="optional"/>
+        <xs:attribute type="xs:string" name="subjectid" use="optional"/>
+        <xs:attribute type="xs:byte" name="periodspercard" use="optional"/>
+        <xs:attribute type="xs:float" name="periodsperweek" use="optional"/>
+        <xs:attribute type="xs:string" name="teacherids" use="optional"/>
+        <xs:attribute type="xs:string" name="classroomids" use="optional"/>
+        <xs:attribute type="xs:string" name="groupids" use="optional"/>
+        <xs:attribute type="xs:string" name="capacity" use="optional"/>
+        <xs:attribute type="xs:string" name="seminargroup" use="optional"/>
+        <xs:attribute type="xs:string" name="termsdefid" use="optional"/>
+        <xs:attribute type="xs:string" name="weeksdefid" use="optional"/>
+        <xs:attribute type="xs:string" name="daysdefid" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="lessonsType">
+    <xs:sequence>
+      <xs:element type="lessonType" name="lesson" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="options"/>
+    <xs:attribute type="xs:string" name="columns"/>
+  </xs:complexType>
+  <xs:complexType name="cardType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="lessonid" use="optional"/>
+        <xs:attribute type="xs:string" name="classroomids" use="optional"/>
+        <xs:attribute type="xs:byte" name="period" use="optional"/>
+        <xs:attribute type="xs:byte" name="weeks" use="optional"/>
+        <xs:attribute type="xs:byte" name="terms" use="optional"/>
+        <xs:attribute type="xs:short" name="days" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="cardsType">
+    <xs:sequence>
+      <xs:element type="cardType" name="card" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="options"/>
+    <xs:attribute type="xs:string" name="columns"/>
+  </xs:complexType>
+  <xs:complexType name="timetableType">
+    <xs:sequence>
+      <xs:element type="periodsType" name="periods"/>
+      <xs:element type="daysdefsType" name="daysdefs"/>
+      <xs:element type="weeksdefsType" name="weeksdefs"/>
+      <xs:element type="termsdefsType" name="termsdefs"/>
+      <xs:element type="subjectsType" name="subjects"/>
+      <xs:element type="teachersType" name="teachers"/>
+      <xs:element type="classroomsType" name="classrooms"/>
+      <xs:element type="gradesType" name="grades"/>
+      <xs:element type="classesType" name="classes"/>
+      <xs:element type="groupsType" name="groups"/>
+      <xs:element type="studentsType" name="students"/>
+      <xs:element type="studentsubjectsType" name="studentsubjects"/>
+      <xs:element type="lessonsType" name="lessons"/>
+      <xs:element type="cardsType" name="cards"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

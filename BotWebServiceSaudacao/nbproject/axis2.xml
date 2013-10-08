@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<axis2 xmlns="http://www.netbeans.org/ns/axis2/1">
+    <libraries>
+        <library-ref name="botschema.jar"/>
+        <library-ref name="xbean.jar"/>
+        <library-ref name="joda-time-2.2.jar"/>
+        <library-ref name="axis-ant.jar"/>
+        <library-ref name="axis-jaxrpc-1.2-beta-3.jar"/>
+        <library-ref name="axis.jar"/>
+        <library-ref name="commons-discovery-0.2.jar"/>
+        <library-ref name="commons-logging-1.0.4.jar"/>
+        <library-ref name="commons-logging-1.1.1.jar"/>
+        <library-ref name="log4j-1.2.8.jar"/>
+        <library-ref name="mail.jar"/>
+        <library-ref name="wsdl4j-1.5.1.jar"/>
+        <library-ref name="neodatis-odb-2.2.beta1.252.jar"/>
+    </libraries>
+    <service name="WebServiceSaudacao">
+        <service-class>br.edu.utfpr.cm.tsi.tcc.marcelo.WebService</service-class>
+    </service>
+</axis2>

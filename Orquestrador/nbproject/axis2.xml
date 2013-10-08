@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<axis2 xmlns="http://www.netbeans.org/ns/axis2/1">
+    <libraries>
+        <library-ref name="xbean.jar"/>
+        <library-ref name="axis-ant.jar"/>
+        <library-ref name="axis-jaxrpc-1.2-beta-3.jar"/>
+        <library-ref name="axis.jar"/>
+        <library-ref name="log4j-1.2.8.jar"/>
+        <library-ref name="mail.jar"/>
+        <library-ref name="xstream-1.4.2.jar"/>
+        <library-ref name="commons-discovery-0.2.jar"/>
+        <library-ref name="commons-logging-1.0.4.jar"/>
+        <library-ref name="commons-logging-1.1.1.jar"/>
+        <library-ref name="botschema.jar"/>
+    </libraries>
+    <service name="Orquestrador">
+        <service-class>orquestrador.Orquestrador</service-class>
+    </service>
+</axis2>

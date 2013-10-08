@@ -1,0 +1,14 @@
+<sevicos urlOrquestrador=" http://localhost:8080/axis2/services/Orquestador2Service">
+  <WebServices>
+    <string>http://localhost:8080/axis2/services/WebServiceNotasPorAluno?wsdl</string>
+        <string>http://localhost:8080/axis2/services/WebServiceDadosUsuarios?wsdl</string>
+        <string>http://localhost:8080/axis2/services/WebServiceSaudacao?wsdl</string>
+        <string>http://localhost:8080/axis2/services/WebServiceBiblioteca?wsdl</string>
+        <string>http://localhost:8080/axis2/services/WebServiceReservaSala?wsdl</string>
+        <string>http://localhost:8080/axis2/services/WebServicePesquisaUsuarios?wsdl</string>
+        <string>http://localhost:8080/axis2/services/WebServiceCadastrarUsuarios?wsdl</string>
+        <string>http://localhost:8080/axis2/services/WebServiceMatricula?wsdl</string>
+        <string>http://localhost:8080/axis2/services/WebServiceCancelarReservaSala?wsdl</string>
+  </WebServices>
+</sevicos>
+

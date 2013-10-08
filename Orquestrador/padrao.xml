@@ -1,0 +1,390 @@
+<wsdl:definitions targetNamespace="http://orquestrador">
+    <wsdl:documentation>Orquestrador</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://net.java/xsd">
+            <xs:import namespace="http://io.java/xsd"/>
+            <xs:complexType name="MalformedURLException">
+                <xs:complexContent>
+                    <xs:extension base="ax25:IOException">
+                        <xs:sequence/>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://noNamespace/xsd">
+            <xs:complexType name="BotschemaDocument">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="botschema" nillable="true" type="ax21:BotschemaType"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="BotschemaType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="conversa" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="perguntas" nillable="true" type="ax21:PerguntasType"/>
+                    <xs:element minOccurs="0" name="process" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="referencias" nillable="true" type="ax21:ReferenciasType"/>
+                    <xs:element minOccurs="0" name="requisicao" nillable="true" type="ax21:RequisicaoType"/>
+                    <xs:element minOccurs="0" name="resposta" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="status" nillable="true" type="ax21:StatusType"/>
+                    <xs:element minOccurs="0" name="wsdl" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PerguntasType">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="perguntaArray" nillable="true" type="ax21:PerguntaType"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PerguntaType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="messageErro" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="questao" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="regex" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="resposta" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="setRegex" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ReferenciasType">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="stringArray" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RequisicaoType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="conteudo" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="email" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="ra" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="setEmail" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="setRa" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="StatusType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="data" nillable="true" type="ax21:DataType"/>
+                    <xs:element minOccurs="0" name="detalhe" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="DataType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="time" type="xs:long"/>
+                    <xs:element minOccurs="0" name="timezone" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://io.java/xsd">
+            <xs:complexType name="IOException">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="File">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="absolute" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="absoluteFile" nillable="true" type="ax24:File"/>
+                    <xs:element minOccurs="0" name="absolutePath" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="canonicalFile" nillable="true" type="ax24:File"/>
+                    <xs:element minOccurs="0" name="canonicalPath" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="directory" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="file" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="freeSpace" type="xs:long"/>
+                    <xs:element minOccurs="0" name="hidden" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="parent" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="parentFile" nillable="true" type="ax24:File"/>
+                    <xs:element minOccurs="0" name="path" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="totalSpace" type="xs:long"/>
+                    <xs:element minOccurs="0" name="usableSpace" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://orquestrador">
+            <xs:import namespace="http://noNamespace/xsd"/>
+            <xs:import namespace="http://net.java/xsd"/>
+            <xs:import namespace="http://io.java/xsd"/>
+            <xs:element name="main">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="args" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="respostaLogica">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="doc" nillable="true" type="ax21:BotschemaDocument"/>
+                        <xs:element minOccurs="0" name="wsdl" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="respostaLogicaResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="reloadConversa">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="schema" nillable="true" type="ax21:BotschemaType"/>
+                        <xs:element minOccurs="0" name="wsdl" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="conversa">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="requisicaoXML" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="conversaResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="OrquestradorMalformedURLException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="MalformedURLException" nillable="true" type="ax26:MalformedURLException"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registrarWS">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="wsdl" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="registrarWSResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="fileChanged">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="file" nillable="true" type="ax27:File"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="mainRequest">
+        <wsdl:part name="parameters" element="ns:main"/>
+    </wsdl:message>
+    <wsdl:message name="conversaRequest">
+        <wsdl:part name="parameters" element="ns:conversa"/>
+    </wsdl:message>
+    <wsdl:message name="conversaResponse">
+        <wsdl:part name="parameters" element="ns:conversaResponse"/>
+    </wsdl:message>
+    <wsdl:message name="registrarWSRequest">
+        <wsdl:part name="parameters" element="ns:registrarWS"/>
+    </wsdl:message>
+    <wsdl:message name="registrarWSResponse">
+        <wsdl:part name="parameters" element="ns:registrarWSResponse"/>
+    </wsdl:message>
+    <wsdl:message name="OrquestradorMalformedURLException">
+        <wsdl:part name="parameters" element="ns:OrquestradorMalformedURLException"/>
+    </wsdl:message>
+    <wsdl:message name="respostaLogicaRequest">
+        <wsdl:part name="parameters" element="ns:respostaLogica"/>
+    </wsdl:message>
+    <wsdl:message name="respostaLogicaResponse">
+        <wsdl:part name="parameters" element="ns:respostaLogicaResponse"/>
+    </wsdl:message>
+    <wsdl:message name="reloadConversaRequest">
+        <wsdl:part name="parameters" element="ns:reloadConversa"/>
+    </wsdl:message>
+    <wsdl:message name="fileChangedRequest">
+        <wsdl:part name="parameters" element="ns:fileChanged"/>
+    </wsdl:message>
+    <wsdl:portType name="OrquestradorPortType">
+        <wsdl:operation name="main">
+            <wsdl:input message="ns:mainRequest" wsaw:Action="urn:main"/>
+        </wsdl:operation>
+        <wsdl:operation name="conversa">
+            <wsdl:input message="ns:conversaRequest" wsaw:Action="urn:conversa"/>
+            <wsdl:output message="ns:conversaResponse" wsaw:Action="urn:conversaResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="registrarWS">
+            <wsdl:input message="ns:registrarWSRequest" wsaw:Action="urn:registrarWS"/>
+            <wsdl:output message="ns:registrarWSResponse" wsaw:Action="urn:registrarWSResponse"/>
+            <wsdl:fault message="ns:OrquestradorMalformedURLException" name="OrquestradorMalformedURLException" wsaw:Action="urn:registrarWSOrquestradorMalformedURLException"/>
+        </wsdl:operation>
+        <wsdl:operation name="respostaLogica">
+            <wsdl:input message="ns:respostaLogicaRequest" wsaw:Action="urn:respostaLogica"/>
+            <wsdl:output message="ns:respostaLogicaResponse" wsaw:Action="urn:respostaLogicaResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="reloadConversa">
+            <wsdl:input message="ns:reloadConversaRequest" wsaw:Action="urn:reloadConversa"/>
+        </wsdl:operation>
+        <wsdl:operation name="fileChanged">
+            <wsdl:input message="ns:fileChangedRequest" wsaw:Action="urn:fileChanged"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="OrquestradorSoap11Binding" type="ns:OrquestradorPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="main">
+            <soap:operation soapAction="urn:main" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="conversa">
+            <soap:operation soapAction="urn:conversa" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registrarWS">
+            <soap:operation soapAction="urn:registrarWS" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="OrquestradorMalformedURLException">
+                <soap:fault use="literal" name="OrquestradorMalformedURLException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="respostaLogica">
+            <soap:operation soapAction="urn:respostaLogica" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="reloadConversa">
+            <soap:operation soapAction="urn:reloadConversa" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="fileChanged">
+            <soap:operation soapAction="urn:fileChanged" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="OrquestradorSoap12Binding" type="ns:OrquestradorPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="main">
+            <soap12:operation soapAction="urn:main" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="conversa">
+            <soap12:operation soapAction="urn:conversa" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registrarWS">
+            <soap12:operation soapAction="urn:registrarWS" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="OrquestradorMalformedURLException">
+                <soap12:fault use="literal" name="OrquestradorMalformedURLException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="respostaLogica">
+            <soap12:operation soapAction="urn:respostaLogica" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="reloadConversa">
+            <soap12:operation soapAction="urn:reloadConversa" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="fileChanged">
+            <soap12:operation soapAction="urn:fileChanged" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="OrquestradorHttpBinding" type="ns:OrquestradorPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="main">
+            <http:operation location="main"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="conversa">
+            <http:operation location="conversa"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registrarWS">
+            <http:operation location="registrarWS"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="respostaLogica">
+            <http:operation location="respostaLogica"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="reloadConversa">
+            <http:operation location="reloadConversa"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="fileChanged">
+            <http:operation location="fileChanged"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="Orquestrador">
+        <wsdl:port name="OrquestradorHttpSoap11Endpoint" binding="ns:OrquestradorSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/Orquestrador.OrquestradorHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="OrquestradorHttpSoap12Endpoint" binding="ns:OrquestradorSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/Orquestrador.OrquestradorHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="OrquestradorHttpEndpoint" binding="ns:OrquestradorHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/Orquestrador.OrquestradorHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
